@@ -1,3 +1,5 @@
 https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial
 
-left off at: "The application works the same as before, except any component can simply use React's Context to consume the authenticated user. To keep the App component clean and concise, I like to extract the session handling for the authenticated user to a separate higher-order component in a new src/components/Session/withAuthentication.js file:"
+
+email verification:
+https://www.robinwieruch.de/react-firebase-email-verification

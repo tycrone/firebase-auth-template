@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {AuthUserContext} from '../Session';
+// import {AuthUserContext} from '../Session';
 
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
@@ -12,33 +12,35 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
-import {withFirebase} from '../Firebase';
+import { withAuthentication } from '../Session';
+// import {withFirebase} from '../Firebase';
 
-class App extends Component {
-  constructor(props){
-    super(props);
+const App = () => (
+// class App extends Component {
+  // constructor(props){
+  //   super(props);
 
-    this.state = {
-      authUser: null,
-    };
-  }
+  //   this.state = {
+  //     authUser: null,
+  //   };
+  // }
 
-  componentDidMount(){
-    this.listener = this.props.firebase.auth.onAuthStateChanged(
-      authUser=>{
-        authUser ? this.setState({authUser}) : this.setState({authUser:null});
-      },
-    );
-  }
+  // componentDidMount(){
+  //   this.listener = this.props.firebase.auth.onAuthStateChanged(
+  //     authUser=>{
+  //       authUser ? this.setState({authUser}) : this.setState({authUser:null});
+  //     },
+  //   );
+  // }
   //remove listener if component unmounts to avoid memory leak issues
-  componentWillUnmount(){
-    this.listener();
-  }
+  // componentWillUnmount(){
+  //   this.listener();
+  // }
 
-  render(){
-    return(
+  // render(){
+  //   return(
 
-      <AuthUserContext.Provider value={this.state.authUser}>
+      // <AuthUserContext.Provider value={this.state.authUser}>
         <Router>
           <div>
             <Navigation />
@@ -52,10 +54,11 @@ class App extends Component {
               <Route path={ROUTES.ADMIN} component={AdminPage} />
           </div>
         </Router>
-      </AuthUserContext.Provider>
-    );
-  }
-}
+      // </AuthUserContext.Provider>
+  //   );
+  // }
+// }
+);
+// export default withFirebase(App);
 
-export default withFirebase(App);
-
+export default withAuthentication(App);
